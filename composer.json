@@ -1,0 +1,16 @@
+{
+  "name": "cryde/noise-functions",
+  "description": "Algorithm for generating heightmaps",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^12.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "MapGenerator\\": "src/"
+    }
+  }
+}
