@@ -1,10 +1,11 @@
-# perlin-noise-generator
+# Noise functions
 
 ## Description
-Heightmaps generator on PHP using perlin-noise algorithm.
+Generate array of noise values.
 
-This package is just an upgrade of https://github.com/A1essandro/perlin-noise-generator to support higher PHP version.  
-In the future it might contain decoupled function 
+This package replicate some noise functions part of https://github.com/mario-deluna/php-glfw but in raw PHP (based on this implementation: https://github.com/nothings/stb/blob/master/stb_perlin.h)
+
+If you want to use the previous upgrade implementation of https://github.com/A1essandro/perlin-noise-generator you can install the `0.0.1` version
 
 ## Requirements
 This package is only supported on PHP 8.4 and above.
@@ -21,31 +22,15 @@ composer require cryde/noise-functions
 
 ## Usage
 
-```php
-$generator = new MapGenerator\PerlinNoiseGenerator();
-$generator->size = 100; //heightmap size: 100x100
-$generator->persistence = 0.8; //map roughness
-$generator->setMapSeed('value'); //optional
-$map = $generator->generate();
-```
-
-#### or
+You can check `demo` folder.
 
 ```php
-$generator = new MapGenerator\PerlinNoiseGenerator();
-$map = $generator->generate([
-    PerlinNoiseGenerator::SIZE => 100,
-    PerlinNoiseGenerator::PERSISTENCE => 0.8,
-    PerlinNoiseGenerator::MAP_SEED => 'value'
-]);
-```
-
-#### mixed:
-
-```php
-$generator = new MapGenerator\PerlinNoiseGenerator();
-$generator->size = 100;
-$map = $generator->generate([
-    PerlinNoiseGenerator::PERSISTENCE => 0.8
-]);
+$size = 1024;
+$noise = new Noise();
+$map = $noise->perlin2DArray(
+    width: $size,
+    height: $size,
+    scale: 4.0,
+    seed: 42
+);
 ```
